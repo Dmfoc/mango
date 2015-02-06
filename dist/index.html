@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mango-cli / build tool by manGoweb</title>
+<link rel="stylesheet" href="styles/screen.css">
+</head>
+<body>
+
+<header class="header" role="banner">
+	<h1>mango-<span>cli</span></h1>
+	<p class="by-mangoweb">by <a href="http://mangoweb.cz">manGoweb</a></p>
+</header>
+
+<div class="content" role="main">
+
+	<section class="part intro" id="toc-intro">
+		<p class="lead">Fully automated to save your precious time. Ready for any type of web project.</p>
+
+		<div class="get-it">
+			<a href="http://github.com/mangoweb/mango-cli" class="btn">Get it at Github</a>
+		</div>
+	</section>
+
+	<section class="part under-the-hood" id="toc-under-the-hood">
+		<h2>Under the hood</h2>
+
+		<section class="featureset">
+			<h3>Styles</h3>
+			<ul class="featureset-items">
+				<li>Stylus</li>
+				<li>Sass</li>
+				<li>Autoprefixer</li>
+				<li>Clean CSS</li>
+			</ul>
+		</section>
+
+		<section class="featureset">
+			<h3>Templates</h3>
+			<ul class="featureset-items">
+				<li>Jade</li>
+			</ul>
+			<h3>Scripts</h3>
+			<ul class="featureset-items">
+				<li>React</li>
+				<li>CoffeeScript</li>
+				<li>Browserify</li>
+				<li>UglifyJS</li>
+			</ul>
+		</section>
+
+		<section class="featureset">
+			<h3>Tools</h3>
+			<ul class="featureset-items">
+				<li>BrowserSync</li>
+				<li>NPM</li>
+				<li>Gulp</li>
+				<li>Imagemin</li>
+				<li>Sourcemaps</li>
+			</ul>
+		</section>
+	</section>
+
+	<section class="part installation" id="toc-installation">
+		<h2>Installation</h2>
+		<p>Install mango-cli once from <code>npm</code> and use it everywhere.</p>
+
+		<pre class="code code-bash">npm install -g mango-cli</pre>
+
+		<p class="note">It will take a while. Go get a coffee.</p>
+	</section>
+
+	<section class="usage">
+		<h2>Usage</h2>
+
+		<ul class="commands">
+			<li><code>mango init</code> scaffolding and initialization</li>
+			<li><code>mango install</code> dependency installation</li>
+			<li><code>mango build</code> production build</li>
+			<li><code>mango dev</code> development mode with watch and stuff.</li>
+		</ul>
+
+		<p>Feel free to use <code>mango [command] -h</code> for detailed instructions.</p>
+	</section>
+
+	<section class="part managing-dependencies" id="toc-dependencies">
+		<h2>Managing project dependencies</h2>
+
+		<pre class="code code-bash">mango install [packages...]</pre>
+
+		<p>Installs packages from NPM and stores them in <code>./node_modules</code> directory, from where you can <code>require</code> them (thanks to Browserify). Maintain current dependencies in <code>mango.json</code> config file under the <code>dependencies</code> section.</p>
+	</section>
+
+	<section class="part build" id="toc-build">
+		<h2>Configuration</h2>
+
+		<p>Your <code>mango.json</code> should look like this.</p>
+
+		<pre class="code code-json">
+{
+	"src_folder": "src",
+	"dist_folder": "dist",
+
+	"styles": [
+		"src/styles/screen.styl"
+	],
+	"scripts": [
+		"src/scripts/index.js"
+	],
+	"images": [
+		"src/images/**/*.{jpg,png,svg}"
+	],
+	"templates": [
+		"src/**/*.{jade,html}"
+	],
+	"dependencies": [
+		"jquery"
+	]
+}
+		</pre>
+	</section>
+
+</div>
+
+<footer class="footer" role="contentinfo">
+	<h2 id="toc-copyright">Copyright</h2>
+	<p class="copyright">Copyright 2014 by <a href="http://mangoweb.cz">manGoweb</a> s.r.o. Code released under <a href="#">the MIT license</a>.</p>
+	<p class="evolved-note">Evolved from <a href="http://frontbase.org">Frontbase</a> devstack.</p>
+</footer>
+
+</body>
+</html>
