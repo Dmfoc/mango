@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>mango-cli / build tool by manGoweb</title>
 <script>
-  (function(d) {
-    var config = {
-      kitId: 'hwk6gdw',
-      scriptTimeout: 3000
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
+(function(d) {
+	var config = {
+		kitId: 'hwk6gdw',
+		scriptTimeout: 3000
+	},
+	h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+})(document);
 </script>
 <link rel="stylesheet" href="styles/screen.css">
 </head>
@@ -26,20 +26,96 @@
 
 	<section class="part intro" id="toc-intro">
 		<p class="lead">ready-to-use frontend workflow</p>
-		<p>Powerful compilation, asset optimization for everyone.<br>Already set up, just grab and play.</p>
+		<p>Powerful compilation, asset optimization and stuff for everyone.<br>Already set up, just grab and play.</p>
 
 		<div class="get-it">
 			<a href="http://github.com/mangoweb/mango-cli" class="btn">Get it at Github</a>
 		</div>
 	</section>
 
+	<section class="part why" id="toc-why">
+		<h2><a href="#toc-why">Why would we do this?</a></h2>
+		<p class="note"><abbr title="too long; didnt read">tl;dr</abbr> SSD space is precious, time is priceless and <code>mango-cli</code> saves both.</p>
+
+		<ul class="reasons">
+			<li>Our projects are repeatedly based on the <strong>same technologies</strong>. So we made conventions.</li>
+			<li><strong>Conventions</strong> also come in handy when you get into a running project and you already know where to find things. And also when your freshly-hired developer initializes a new project.</li>
+			<li>Grunt/Gulp save local dependencies nicely into <code>node_modules</code> directory. Some of us develop a lot of projects paralelly and these packages take so much of our <strong>precious SSD space</strong>. So <code>mango-cli</code> stores common tasks globally (we know the risks… but let's be pragmatic).</li>
+			<li class="note">We are writing an article about this tool. Stay tuned…</li>
+		</ul>
+	</section>
+
+	<section class="part installation" id="toc-installation">
+		<h2><a href="#toc-installation">Installation</a></h2>
+		<p>Install mango-cli once from <code>npm</code> and use it everywhere.</p>
+
+		<pre class="code code-bash">npm install -g mango-cli</pre>
+
+		<p class="note">It will take a while. Go get a cup of coffee ;)</p>
+	</section>
+
+	<section class="usage" id="toc-usage">
+		<h2><a href="#toc-usage">Usage</a></h2>
+
+		<ul class="commands">
+			<li><code>mango <span class="code-command">init</span> [your-project-name]</code> <span class="command-desc">initialize an example project</span></li>
+			<li><code>mango <span class="code-command">init</span> --source [user/repo] [project-name]</code> <span class="command-desc">initialize a project by forking an existing Github repository.</span></li>
+			<li><code>mango <span class="code-command">install</span></code> <span class="command-desc">dependency installation</span></li>
+			<li><code>mango <span class="code-command">build</span></code> <span class="command-desc">production build</span></li>
+			<li><code>mango <span class="code-command">dev</span></code> <span class="command-desc">development mode with watch and stuff.</span></li>
+		</ul>
+
+		<p>Feel free to use <code>mango [command] -h</code> for detailed instructions.</p>
+	</section>
+
+	<section class="part configuration" id="toc-configuration">
+		<h2><a href="#toc-configuration">Configuration</a></h2>
+
+		<p>Your <code>mango.json</code> may look like this.</p>
+
+		<pre class="code code-json">
+{
+	<span class="code-section">"src_folder"</span>: <span class="code-string">"src"</span>,
+	<span class="code-section">"dist_folder"</span>: <span class="code-string">"dist"</span>,
+
+	<span class="code-section">"styles"</span>: [
+		<span class="code-string">"src/styles/screen.styl"</span>,
+		<span class="code-string">"src/styles/admin.styl"</span>,
+		<span class="code-string">"src/styles/print.styl"</span>
+	],
+	<span class="code-section">"scripts"</span>: [
+		<span class="code-string">"src/scripts/index.js"</span>
+	],
+	<span class="code-section">"images"</span>: [
+		<span class="code-string">"src/images/**/*.{jpg,png,svg}"</span>
+	],
+	<span class="code-section">"templates"</span>: [
+		<span class="code-string">"src/**/*.{jade,html}"</span>
+	],
+	<span class="code-section">"dependencies"</span>: [
+		<span class="code-string">"jquery"</span>
+	]
+}
+		</pre>
+	</section>
+
+	<section class="part managing-dependencies" id="toc-dependencies">
+		<h2><a href="#toc-dependencies">Managing project dependencies</a></h2>
+
+		<pre class="code code-bash">mango install [packages...]</pre>
+
+		<p>Installs <em title="yeah, you read that right">frontend packages</em> from NPM and stores them in <code>./node_modules</code> directory, from where you can <code>require</code> them (thanks to Browserify).</p>
+		<p>Maintain current dependencies in <code>mango.json</code> config file under the <code>dependencies</code> section.</p>
+	</section>
+
 	<section class="part under-the-hood" id="toc-under-the-hood">
-		<h2>Under the hood</h2>
+		<h2><a href="#toc-under-the-hood">Under the hood</a></h2>
 
 		<section class="featureset">
 			<h3>Styles</h3>
 			<ul class="featureset-items">
 				<li>Stylus</li>
+				<li>LESS</li>
 				<li>Sass</li>
 				<li>Autoprefixer</li>
 				<li>Clean CSS</li>
@@ -53,7 +129,7 @@
 			</ul>
 			<h3>Scripts</h3>
 			<ul class="featureset-items">
-				<li>React</li>
+				<li>React + JSX</li>
 				<li>CoffeeScript</li>
 				<li>Browserify</li>
 				<li>UglifyJS</li>
@@ -64,7 +140,6 @@
 			<h3>Tools</h3>
 			<ul class="featureset-items">
 				<li>BrowserSync</li>
-				<li>NPM</li>
 				<li>Gulp</li>
 				<li>Imagemin</li>
 				<li>Sourcemaps</li>
@@ -72,63 +147,10 @@
 		</section>
 	</section>
 
-	<section class="part installation" id="toc-installation">
-		<h2>Installation</h2>
-		<p>Install mango-cli once from <code>npm</code> and use it everywhere.</p>
-
-		<pre class="code code-bash">npm install -g mango-cli</pre>
-
-		<p class="note">It will take a while. Go get a coffee.</p>
-	</section>
-
-	<section class="usage">
-		<h2>Usage</h2>
-
-		<ul class="commands">
-			<li><code>mango init</code> scaffolding and initialization</li>
-			<li><code>mango install</code> dependency installation</li>
-			<li><code>mango build</code> production build</li>
-			<li><code>mango dev</code> development mode with watch and stuff.</li>
-		</ul>
-
-		<p>Feel free to use <code>mango [command] -h</code> for detailed instructions.</p>
-	</section>
-
-	<section class="part managing-dependencies" id="toc-dependencies">
-		<h2>Managing project dependencies</h2>
-
-		<pre class="code code-bash">mango install [packages...]</pre>
-
-		<p>Installs packages from NPM and stores them in <code>./node_modules</code> directory, from where you can <code>require</code> them (thanks to Browserify). Maintain current dependencies in <code>mango.json</code> config file under the <code>dependencies</code> section.</p>
-	</section>
-
-	<section class="part build" id="toc-build">
-		<h2>Configuration</h2>
-
-		<p>Your <code>mango.json</code> should look like this.</p>
-
-		<pre class="code code-json">
-{
-	"src_folder": "src",
-	"dist_folder": "dist",
-
-	"styles": [
-		"src/styles/screen.styl"
-	],
-	"scripts": [
-		"src/scripts/index.js"
-	],
-	"images": [
-		"src/images/**/*.{jpg,png,svg}"
-	],
-	"templates": [
-		"src/**/*.{jade,html}"
-	],
-	"dependencies": [
-		"jquery"
-	]
-}
-		</pre>
+	<section class="part appendix">
+		<div class="get-it">
+			<a href="http://github.com/mangoweb/mango-cli" class="btn">Check it out. On Github</a>
+		</div>
 	</section>
 
 </div>
@@ -138,6 +160,17 @@
 	<p class="copyright">Copyright 2014 by <a href="http://mangoweb.cz">manGoweb</a> s.r.o. Code released under <a href="#">the MIT license</a>.</p>
 	<p class="evolved-note">Evolved from <a href="http://frontbase.org">Frontbase</a> devstack.</p>
 </footer>
+
+<script>
+if(window.location.hostname==='mangoweb.github.io'){
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-59470449-1', 'auto');
+ga('send', 'pageview');
+}
+</script>
 
 </body>
 </html>
